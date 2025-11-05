@@ -1,0 +1,24 @@
+{
+    "expansion": false,
+    "google_play_key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm46rQUQXE5F17kbE7+he5BJ6FODP3fi5AHaH6w4Dpl+AN4wSIaXar9GOGRe6cn/1mq4FgkPdQyOiN9PkENwy0wxkYW+YISPPkxGLu1XY8BVF7VgI95+rlBzu1CzsPxzbb919lFP8Vkkp7q3BgdsG5qBK3piBIUuMfY/pD5+e5XJye/zYTnDpFAw7hSRipWKG8ZaGjgOHTDIKMDUNZkbA6Y90GhRqyEwYUDILju8TWb2tqFy7OLBurqTuvM9pGgne0CLUDnLcstrQbIPwvjwwIHHpnHxe+jnHi95bUhZWrQ/6xPQQeYPKc3MA1NyskLu7lQIxJD6UKuOHywjadozYKQIDAQAB",
+    "google_play_salt": "19, 7, -10, 3, 5, 45, 15, 7, 19, 88, 1, 2, 4, 6, 7, 8, 9, 10, 11, 12",
+    "heap_size": "4",
+    "icon_name": "Celebrity Hunter V.0.93",
+    "include_pil": false,
+    "include_sqlite": false,
+    "layout": null,
+    "name": "Celebrity Hunter V.0.93",
+    "numeric_version": 1,
+    "orientation": "sensorLandscape",
+    "package": "com.celebrityhunter",
+    "permissions": [
+        "VIBRATE",
+        "INTERNET"
+    ],
+    "source": false,
+    "store": "none",
+    "update_always": true,
+    "update_icons": true,
+    "update_keystores": true,
+    "version": "1.0"
+}
