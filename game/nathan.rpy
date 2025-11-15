@@ -23850,7 +23850,7 @@ label ajuda_itchio:
 
             p "Você é o melhor, amor. Vou abrir o site agora. Não assuste."
 
-            $ renpy.run(OpenURL('https://apoia.se/geiko/contents/view/De-5-Estrelas-pro-jogo-da-Pri-ajude-a-Geiko-na-gringa-e-ganhe-creditos-BrR1lObCy'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Outra hora":
 
 

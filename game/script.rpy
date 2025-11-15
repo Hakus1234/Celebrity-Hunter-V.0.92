@@ -1,11 +1,40 @@
+define demonio = Character("Garota Demônio", color="#ff66cc")
+
+image bg demon_pc = "intro-comeco/garota-demonio/fundo-gamer-com-pc.png"
+image demonio neutral = "intro-comeco/garota-demonio/pose-normal-neutra.png"
+image demonio smile = "intro-comeco/garota-demonio/pose-joinha-sorrindo-alegre.png"
+image demonio talk = "intro-comeco/garota-demonio/pose-bracos-abertos-conversando.png"
+image demonio serious = "intro-comeco/garota-demonio/pose-apontando-ded-com-raiva-falando.png"
 
 
+label intro_codex_notice:
+
+    scene bg demon_pc with dissolve
+    show demonio neutral at center
+
+    demonio "Ei, jogador! Aqui é a garota demônio enviada pelo pessoal do canal Team HP Infinit pra garantir que você está na versão certa."
+    show demonio talk
+    demonio "Confirmado: esta build é a {b}0.93{/b}, recheada com mais de {b}130 animações novas{/b} e os ajustes de estabilidade que o Codex cuidou pra gente."
+    show demonio smile
+    demonio "Os cheats liberam conteúdo pra testar rota e tirar o peso das antigas travas premium, mas lembra: eles existem pra facilitar QA e balanceamento."
+    show demonio serious
+    demonio "Se você abusar dos cheats de desenvolvimento pode corromper saves ou quebrar progressão. Use por sua conta e risco e sempre faça backup antes!"
+    show demonio talk
+    demonio "Divirta-se, credita o Codex quando espalhar a notícia e, se der ruim, não diga que eu não avisei. Agora sim, bora voltar pra história!"
+
+    hide demonio talk
+    scene black with dissolve
+
+    return
 
 
 label start:
 
     play sound "extra/start.mp3"
 
+    if not codex_notice_done:
+        $ codex_notice_done = True
+        call intro_codex_notice
 
 
     call priscila_inicio from _call_priscila_inicio
@@ -240,7 +269,6 @@ label start:
 
         $ mcpnome = "Gustavo"
         $ mcsnome = "Rodrigues"
-
         call screen text_input_screen
 
         call screen confirmar_nome
@@ -562,7 +590,7 @@ label start:
             "Pegar as moedas da Pixie.":
 
 
-                $ renpy.run(OpenURL('https://www.playgeiko.com.br/inicia_jogo_ch/'))
+                $ renpy.notify("Links externos desativados nesta edicao.")
 
                 p "Assustou? Prontinho."
 
@@ -3316,19 +3344,19 @@ label start:
         "Instagram":
 
 
-            $ renpy.run(OpenURL('https://www.instagram.com/geikogames/'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
 
             p rindo "Valeu!"
         "Facebook":
 
 
-            $ renpy.run(OpenURL('https://www.facebook.com/celebrityhuntergame'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
 
             p rindo "Valeu!"
         "Twitter":
 
 
-            $ renpy.run(OpenURL('https://twitter.com/GeikoGames'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
 
             p rindo "Valeu!"
         "Sai pra lá":
@@ -3552,7 +3580,7 @@ label start:
                 "Acessar site de apoiador":
 
 
-                    $ renpy.run(OpenURL('https://www.apoia.se/geiko'))
+                    $ renpy.notify("Links externos desativados nesta edicao.")
                 "Talvez outra hora":
 
 

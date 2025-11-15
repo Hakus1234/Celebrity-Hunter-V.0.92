@@ -2478,6 +2478,7 @@ label cave_minigame:
 
             "{b}Escreva a palavra de 9 letras formada quando as pedras são colocadas na ordem correta.{/b}"
 
+            $ cave_resposta = ""
             call screen zeit_screen
 
 

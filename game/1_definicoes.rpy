@@ -6,21 +6,21 @@ init python:
     class _OfflinePythonSDLActivity:
         def __init__(self):
             self._store = _store
-            self._target_coins = 28000
-            self._target_cash = 38000
             self._ensure_unlocks()
 
         def _ensure_unlocks(self):
             self._store.userlogado = True
             self._store.persistent.apoiador = True
             self._store.persistent.banned = False
-            self._store.persistent.coins = self._target_coins
-            self._store.cash = self._target_cash
+            if not hasattr(self._store.persistent, "coins"):
+                self._store.persistent.coins = 50
+            if not hasattr(self._store, "cash"):
+                self._store.cash = 0
+            if not hasattr(self._store, "credito"):
+                self._store.credito = 0
 
         def iniciaVariaveis(self):
             self._ensure_unlocks()
-            self._store.persistent.coins = self._target_coins
-            self._store.cash = self._target_cash
 
         def registraEvento(self, *args, **kwargs):
             return None
@@ -56,30 +56,42 @@ init python:
             return uid
 
         def pegaMoedas(self, *args, **kwargs):
-            if self._store.persistent.coins < self._target_coins:
-                self._store.persistent.coins = self._target_coins
-            if self._store.persistent.coins > self._target_coins:
-                self._store.persistent.coins = self._target_coins
-            return self._store.persistent.coins
+            return getattr(self._store.persistent, "coins", 0)
 
-        def usaMoedas(self, *args, **kwargs):
-            return self.pegaMoedas()
+        def usaMoedas(self, quantidade=0, *args, **kwargs):
+            valor = quantidade or (args[0] if args else 0) or kwargs.get("quantidade", 0)
+            try:
+                valor = int(valor)
+            except Exception:
+                valor = 0
+            coins = getattr(self._store.persistent, "coins", 0)
+            if valor > 0:
+                coins = max(0, coins - valor)
+                self._store.persistent.coins = coins
+            return coins
 
-        def addCoins(self, *args, **kwargs):
-            if self._store.persistent.coins < self._target_coins:
-                self._store.persistent.coins = self._target_coins
-            if self._store.persistent.coins > self._target_coins:
-                self._store.persistent.coins = self._target_coins
-            return self._store.persistent.coins
+        def addCoins(self, quantidade=0, *args, **kwargs):
+            valor = quantidade or (args[0] if args else 0) or kwargs.get("quantidade", 0)
+            try:
+                valor = int(valor)
+            except Exception:
+                valor = 0
+            coins = getattr(self._store.persistent, "coins", 0) + max(0, valor)
+            self._store.persistent.coins = coins
+            return coins
 
         def pegaCredito(self, *args, **kwargs):
-            credito = getattr(self._store, "credito", self._target_coins)
+            return getattr(self._store, "credito", 0)
+
+        def addCredito(self, quantidade=0, *args, **kwargs):
+            valor = quantidade or (args[0] if args else 0) or kwargs.get("quantidade", 0)
+            try:
+                valor = int(valor)
+            except Exception:
+                valor = 0
+            credito = getattr(self._store, "credito", 0) + max(0, valor)
             self._store.credito = credito
             return credito
-
-        def addCredito(self, *args, **kwargs):
-            self._store.credito = self._target_coins
-            return self._store.credito
 
         def trocaCredito(self, *args, **kwargs):
             return self.pegaCredito()
@@ -88,15 +100,29 @@ init python:
             return self.pegaCredito()
 
         def pegaCash(self, *args, **kwargs):
-            cash = getattr(self._store, "cash", self._target_cash)
+            return getattr(self._store, "cash", 0)
+
+        def ganhaCash(self, quantidade=0, *args, **kwargs):
+            valor = quantidade or (args[0] if args else 0) or kwargs.get("quantidade", 0)
+            try:
+                valor = int(valor)
+            except Exception:
+                valor = 0
+            cash = getattr(self._store, "cash", 0) + max(0, valor)
             self._store.cash = cash
             return cash
 
-        def ganhaCash(self, *args, **kwargs):
-            return self.pegaCash()
-
-        def usaCash(self, *args, **kwargs):
-            return self.pegaCash()
+        def usaCash(self, quantidade=0, *args, **kwargs):
+            valor = quantidade or (args[0] if args else 0) or kwargs.get("quantidade", 0)
+            try:
+                valor = int(valor)
+            except Exception:
+                valor = 0
+            cash = getattr(self._store, "cash", 0)
+            if valor > 0:
+                cash = max(0, cash - valor)
+                self._store.cash = cash
+            return cash
 
         def pegaLivros(self, *args, **kwargs):
             return 999
@@ -113,12 +139,17 @@ init python:
             return True
 
         def pegaFpontos(self, *args, **kwargs):
-            if getattr(self._store, "mc_fisico", 0) < 500:
-                self._store.mc_fisico = 500
-            return self._store.mc_fisico
+            return getattr(self._store, "mc_fisico", 0)
 
-        def addFpontos(self, *args, **kwargs):
-            return self.pegaFpontos()
+        def addFpontos(self, quantidade=0, *args, **kwargs):
+            valor = quantidade or (args[0] if args else 0) or kwargs.get("quantidade", 0)
+            try:
+                valor = int(valor)
+            except Exception:
+                valor = 0
+            pontos = getattr(self._store, "mc_fisico", 0) + max(0, valor)
+            self._store.mc_fisico = pontos
+            return pontos
 
         def maisMpontos(self, *args, **kwargs):
             return 999
@@ -187,14 +218,33 @@ init python:
 
     PythonSDLActivity = _OfflinePythonSDLActivity()
 
-    def name_func(newstring):
-        store.mcpnome = newstring
+    def prompt_store_input(var_name, prompt, length=15, allow=None):
+        def _inner():
+            current_value = getattr(store, var_name, "")
+            new_value = renpy.input(prompt, default=current_value, length=length, allow=allow)
+            if new_value is None:
+                return
+            new_value = new_value.strip()
+            if not new_value:
+                return
+            setattr(store, var_name, new_value)
 
-    def lastname_func(newstring):
-        store.mcsnome = newstring
+        renpy.invoke_in_new_context(_inner)
+        renpy.restart_interaction()
 
-    def zeit_func(newstring):
-        store.cave_resposta = newstring
+    def prompt_store_input(var_name, prompt, length=15, allow=None):
+        def _inner():
+            current_value = getattr(_store, var_name, "")
+            new_value = renpy.input(prompt, default=current_value, length=length, allow=allow)
+            if new_value is None:
+                return
+            new_value = new_value.strip()
+            if not new_value:
+                return
+            setattr(_store, var_name, new_value)
+
+        renpy.invoke_in_new_context(_inner)
+        renpy.restart_interaction()
 
     renpy.music.register_channel('Musica', mixer=None, loop=None, stop_on_mute=True, tight=False, file_prefix='', file_suffix='', buffer_queue=True, movie=False, framedrop=True)
 
@@ -905,6 +955,7 @@ default naru_e1 = "nada"
 
 
 default show_quick_menu = True
+default codex_notice_done = False
 default foi_despedido = False
 
 default p1_quem = False
@@ -1027,6 +1078,7 @@ default diana_p2 = False
 default celeste_p1 = False
 default hacker_p1 = False
 default pautas = 0
+default pautas_liberado = False
 default entregou_pauta = 0
 default priscila_atencao = 0
 default sayuri_atencao = 0
@@ -1723,7 +1775,7 @@ default pixel_conversa1vez = False
 default expo_cave = 0
 default persistent.expo_cave = 0
 default cave_mini_energia = 0
-default cave_resposta = "z"
+default cave_resposta = ""
 
 
 
@@ -2556,7 +2608,7 @@ label nao_apoiador:
         "Abrir o guia":
 
 
-            $ renpy.run(OpenURL('https://apoia.se/geiko/contents/view/Guia-para-novos-apoiadores-Tudo-o-que-voce-precisa-saber-RAWkm5nUp'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Outra hora":
 
 
@@ -3782,7 +3834,7 @@ screen menu_novidades():
 
                     spacing 10
 
-                    imagebutton auto "celular/wp-icon_%s.png" xalign 0.5 action OpenURL("https://www.celebrityhunter.com.br/whatsapp")
+                    imagebutton auto "celular/wp-icon_%s.png" xalign 0.5 action Notify("Links externos desativados nesta edicao.")
 
                     text "WhatsApp" size 13 xalign 0.5
 
@@ -3790,7 +3842,7 @@ screen menu_novidades():
 
                     spacing 10
 
-                    imagebutton auto "celular/insta-icon_%s.png" xalign 0.5 action OpenURL("https://www.instagram.com/geikogames/")
+                    imagebutton auto "celular/insta-icon_%s.png" xalign 0.5 action Notify("Links externos desativados nesta edicao.")
 
                     text "Instagram" size 13 xalign 0.5
 
@@ -3798,7 +3850,7 @@ screen menu_novidades():
 
                     spacing 10
 
-                    imagebutton auto "celular/face-icon_%s.png" xalign 0.5 action OpenURL("https://www.facebook.com/celebrityhuntergame/")
+                    imagebutton auto "celular/face-icon_%s.png" xalign 0.5 action Notify("Links externos desativados nesta edicao.")
 
                     text "Facebook" size 13 xalign 0.5
 
@@ -3810,7 +3862,7 @@ screen menu_novidades():
 
                     spacing 10
 
-                    imagebutton auto "celular/discord-icon_%s.png" xalign 0.5 action OpenURL("https://discord.gg/CVaBgQcHuD")
+                    imagebutton auto "celular/discord-icon_%s.png" xalign 0.5 action Notify("Links externos desativados nesta edicao.")
 
                     text "Discord" size 13 xalign 0.5
 
@@ -3818,7 +3870,7 @@ screen menu_novidades():
 
                     spacing 10
 
-                    imagebutton auto "celular/yt-icon_%s.png" xalign 0.5 action OpenURL("https://www.youtube.com/channel/UCCQUpv2UP71C0Fmrqyek1yg/")
+                    imagebutton auto "celular/yt-icon_%s.png" xalign 0.5 action Notify("Links externos desativados nesta edicao.")
 
                     text "YouTube" size 13 xalign 0.5
 
@@ -3826,7 +3878,7 @@ screen menu_novidades():
 
                     spacing 10
 
-                    imagebutton idle "celular/jogos.webp" xalign 0.5 action OpenURL("https://www.linktr.ee/geikogames/")
+                    imagebutton idle "celular/jogos.webp" xalign 0.5 action Notify("Links externos desativados nesta edicao.")
 
                     text "Mais Jogos" size 13 xalign 0.5
 
@@ -3899,13 +3951,13 @@ screen menu_novidades():
 
             if premium:
 
-                imagebutton auto "extra/botao_saiba_mais_%s.png" action OpenURL("https://apoia.se/geiko") xalign 0.5
+                imagebutton auto "extra/botao_saiba_mais_%s.png" action Notify("Links externos desativados nesta edicao.") xalign 0.5
 
 
 
             else:
 
-                imagebutton auto "extra/botao_saiba_mais_%s.png" action OpenURL("https://apoia.se/geiko") xalign 0.5
+                imagebutton auto "extra/botao_saiba_mais_%s.png" action Notify("Links externos desativados nesta edicao.") xalign 0.5
 
 screen mostra_video():
     tag menu_aba
@@ -3975,70 +4027,77 @@ screen menu_recomecar():
 
 
 
+
+
 screen text_input_screen():
+
+    modal True
 
     frame style "tela_padrao":
 
-
-
         has vbox
+        spacing 18
         xalign 0.5
-        spacing 15
+
+        text "Digite como deseja ser chamado" style "tela_texto" xalign 0.5
 
         vbox:
+            spacing 8
             xalign 0.5
-            text "Nome" style "tela_texto"
+            text "Nome" style "tela_texto" xalign 0.5
             button:
-                xalign 0.5
-                id "input_1"
+                style "input_field_button"
+                action Function(prompt_store_input, "mcpnome", "Digite o nome", 20)
+                text (mcpnome if mcpnome else "Toque para digitar") style "input_field_text"
 
-                action NullAction()
-
-                add Input(hover_color="#ec2098",size=22, color="#ec2098", default=mcpnome, changed=name_func, length=20, button=renpy.get_widget("text_input_screen","input_1")) yalign 1.0
         vbox:
+            spacing 8
             xalign 0.5
-            text "Sobrenome" style "tela_texto"
+            text "Sobrenome" style "tela_texto" xalign 0.5
             button:
-                xalign 0.5
-                id "input_2"
+                style "input_field_button"
+                action Function(prompt_store_input, "mcsnome", "Digite o sobrenome", 20)
+                text (mcsnome if mcsnome else "Toque para digitar") style "input_field_text"
 
-                action NullAction()
-
-                add Input(hover_color="#ec2098",size=22, color="#ec2098", default=mcsnome, changed=lastname_func, length=20, button=renpy.get_widget("text_input_screen","input_2")) yalign 1.0
         vbox:
-
             xalign 0.5
-
             imagebutton auto "extra/botao_confirmar_%s.png" action [ Hide("text_input_screen"), Return() ] xalign 0.5
-
 
 
 screen zeit_screen():
 
+    modal True
+
     frame style "tela_padrao":
 
-
-
         has vbox
+        spacing 18
         xalign 0.5
-        spacing 15
         text "{b}Reorganize as 9 letras abaixo e confirme{/b}" style "tela_texto" xalign 0.5 xanchor 0.5
+
         vbox:
+            spacing 8
             xalign 0.5
-            text "Escreva a palavra correta" style "tela_texto"
+            text "Escreva a palavra correta" style "tela_texto" xalign 0.5
             button:
-                xalign 0.5
-                id "input_1"
-
-                action NullAction()
-
-                add Input(hover_color="#ec2098",size=22, color="#ec2098", allow="zeitgs", default="ttseegzii", changed=zeit_func, length=9, button=renpy.get_widget("zeit_screen","input_1")) yalign 1.0
+                style "input_field_button"
+                action Function(prompt_store_input, "cave_resposta", "Digite a palavra secreta", 9, allow="zeitgs")
+                text (cave_resposta if cave_resposta else "Toque para digitar") style "input_field_text"
 
         vbox:
-
             xalign 0.5
+            imagebutton auto "extra/botao_confirmar_%s.png" action [ Hide("zeit_screen"), Return() ] xalign 0.5
 
-            imagebutton auto "extra/botao_confirmar_%s.png" action [ Hide("text_input_screen"), Return() ] xalign 0.5
+style input_field_button:
+    background Solid("#ffffff22")
+    padding (15, 18)
+    xalign 0.5
+    xminimum 450
+
+style input_field_text:
+    color "#ec2098"
+    size 24
+    xalign 0.5
 
 screen confirmar_nome():
 

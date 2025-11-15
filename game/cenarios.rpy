@@ -1966,11 +1966,11 @@ label cenario_praia:
                                 "Baixar Nautilus 05 (Premium)":
 
 
-                                    $ renpy.run(OpenURL('https://apoia.se/geiko/contents/view/Nautilus-05:-Serie-Cyberpunk-(Premium)-OzLBBUKHv'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Baixar Nautilus 05 (Grátis)":
 
 
-                                    $ renpy.run(OpenURL('https://www.geiko.net/n05/'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Outra hora":
 
 
@@ -1996,11 +1996,11 @@ label cenario_praia:
                                 "Baixar Encontros (Premium)":
 
 
-                                    $ renpy.run(OpenURL('https://apoia.se/geiko/'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Baixar Encontros (Grátis)":
 
 
-                                    $ renpy.run(OpenURL('https://www.geiko.net/en/'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Outra hora":
 
 
@@ -2034,11 +2034,11 @@ label cenario_praia:
                                 "Baixar Nautilus 10 (Premium)":
 
 
-                                    $ renpy.run(OpenURL('https://apoia.se/geiko/contents/view/Nautilus-10:-Projeto-Cyberpunk-(Premium)-2wnrXt_c_'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Baixar Nautilus 10 (Grátis)":
 
 
-                                    $ renpy.run(OpenURL('https://www.geiko.net/npc/'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Outra hora":
 
 
@@ -2072,11 +2072,11 @@ label cenario_praia:
                                 "Baixar NFC +18 (Premium)":
 
 
-                                    $ renpy.run(OpenURL('https://apoia.se/geiko/contents/view/Nova-Fantasia-Clicker-+18-(Premium)-UTkgjtBgK'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Baixar NFC +18 (Grátis)":
 
 
-                                    $ renpy.run(OpenURL('https://www.geiko.net/nfc/'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Outra hora":
 
 
@@ -2106,11 +2106,11 @@ label cenario_praia:
                                 "Baixar Nautilus 20 (Premium)":
 
 
-                                    $ renpy.run(OpenURL('https://apoia.se/geiko/'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Baixar Nautilus 20 (Grátis)":
 
 
-                                    $ renpy.run(OpenURL('https://www.geiko.net/n20/'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Outra hora":
 
 
@@ -2138,11 +2138,11 @@ label cenario_praia:
                                 "Baixar Nova Fantasia (Premium)":
 
 
-                                    $ renpy.run(OpenURL('https://apoia.se/geiko/contents/view/Nova-Fantasia:-RPG-Adulto-(Versao-Premium)-pa2lp7E-N'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Baixar Nova Fantasia (Grátis)":
 
 
-                                    $ renpy.run(OpenURL('https://www.geiko.net/nf/'))
+                                    $ renpy.notify("Links externos desativados nesta edicao.")
                                 "Outra hora":
 
 
@@ -6965,11 +6965,11 @@ label ap_mc_tv:
                     "Baixar Nautilus 05 (Premium)":
 
 
-                        $ renpy.run(OpenURL('https://apoia.se/geiko/contents/view/Nautilus-05:-Serie-Cyberpunk-(Premium)-OzLBBUKHv'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Baixar Nautilus 05 (Grátis)":
 
 
-                        $ renpy.run(OpenURL('https://www.geiko.net/n05/'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Outra hora":
 
 
@@ -6995,11 +6995,11 @@ label ap_mc_tv:
                     "Baixar Encontros (Premium)":
 
 
-                        $ renpy.run(OpenURL('https://apoia.se/geiko/'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Baixar Encontros (Grátis)":
 
 
-                        $ renpy.run(OpenURL('https://www.geiko.net/en/'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Outra hora":
 
 
@@ -7033,11 +7033,11 @@ label ap_mc_tv:
                     "Baixar Nautilus 10 (Premium)":
 
 
-                        $ renpy.run(OpenURL('https://apoia.se/geiko/contents/view/Nautilus-10:-Projeto-Cyberpunk-(Premium)-2wnrXt_c_'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Baixar Nautilus 10 (Grátis)":
 
 
-                        $ renpy.run(OpenURL('https://www.geiko.net/npc/'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Outra hora":
 
 
@@ -7071,11 +7071,11 @@ label ap_mc_tv:
                     "Baixar NFC +18 (Premium)":
 
 
-                        $ renpy.run(OpenURL('https://apoia.se/geiko/contents/view/Nova-Fantasia-Clicker-+18-(Premium)-UTkgjtBgK'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Baixar NFC +18 (Grátis)":
 
 
-                        $ renpy.run(OpenURL('https://www.geiko.net/nfc/'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Outra hora":
 
 
@@ -7105,11 +7105,11 @@ label ap_mc_tv:
                     "Baixar Nautilus 20 (Premium)":
 
 
-                        $ renpy.run(OpenURL('https://apoia.se/geiko/'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Baixar Nautilus 20 (Grátis)":
 
 
-                        $ renpy.run(OpenURL('https://www.geiko.net/n20/'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Outra hora":
 
 
@@ -7137,11 +7137,11 @@ label ap_mc_tv:
                     "Baixar Nova Fantasia (Premium)":
 
 
-                        $ renpy.run(OpenURL('https://apoia.se/geiko/contents/view/Nova-Fantasia:-RPG-Adulto-(Versao-Premium)-pa2lp7E-N'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Baixar Nova Fantasia (Grátis)":
 
 
-                        $ renpy.run(OpenURL('https://www.geiko.net/nf/'))
+                        $ renpy.notify("Links externos desativados nesta edicao.")
                     "Outra hora":
 
 

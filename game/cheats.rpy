@@ -370,7 +370,6 @@
         renpy_exports.restart_interaction()
         renpy_exports.notify('Valores restaurados aos minimos.')
 
-
     CHEAT_UNLOCKERS = [
         ("Liberar todas as cartas", cheat_unlock_cards),
         ("Ativar todos os ternos", cheat_unlock_suits),

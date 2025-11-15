@@ -26,7 +26,7 @@ define gui.show_name = False
 
 
 
-define config.version = "0.92"
+define config.version = "0.93"
 
 if renpy.android:
     define config.hard_rollback_limit = 30

@@ -2963,7 +2963,7 @@ screen menu_loja():
 
                         text "{b}Preço: R$ 9,90{/b}" size 15
                         text "Acelere seu progresso e complete o álbum de cartas" size 15
-                        imagebutton auto "extra/botao_comprar_%s.png" action OpenURL('https://play.geiko.net/comprar/celebrity-hunter/' + uid + '/e48c202266f44868b8ca')
+                        imagebutton auto "extra/botao_comprar_%s.png" action Notify("Links externos desativados nesta edicao.")
 
                     vbox:
 
@@ -2978,7 +2978,7 @@ screen menu_loja():
 
                         text "{b}Preço: 4,90{/b}" size 15
                         text "O valor exato para comprar roupas e melhorar o estilo" size 15
-                        imagebutton auto "extra/botao_comprar_%s.png" action OpenURL('https://play.geiko.net/comprar/celebrity-hunter/' + uid + '/6162f34edb7f4db7b58d')
+                        imagebutton auto "extra/botao_comprar_%s.png" action Notify("Links externos desativados nesta edicao.")
 
                 vbox:
 
@@ -2997,7 +2997,7 @@ screen menu_loja():
 
                         text "{b}Preço: R$ 17,90{/b}" size 15
                         text "Finalmente chegou a hora de curtir a vida adoidado" size 15
-                        imagebutton auto "extra/botao_comprar_%s.png" action OpenURL('https://play.geiko.net/comprar/celebrity-hunter/' + uid + '/20d774d587a142c78b9a')
+                        imagebutton auto "extra/botao_comprar_%s.png" action Notify("Links externos desativados nesta edicao.")
 
                     vbox:
 
@@ -3012,7 +3012,7 @@ screen menu_loja():
 
                         text "{b}Preço: R$ 29,90{/b}" size 15
                         text "É sua vez de ficar rico e conquistar o mundo!" size 15
-                        imagebutton auto "extra/botao_comprar_%s.png" action OpenURL('https://play.geiko.net/comprar/celebrity-hunter/' + uid + '/1060ff0d8ff64c818c35')
+                        imagebutton auto "extra/botao_comprar_%s.png" action Notify("Links externos desativados nesta edicao.")
 
             vbox:
 

@@ -417,7 +417,7 @@ screen quick_menu():
                 imagebutton auto "extra/celular_menu_%s.png" action Show("menu_celular")
 
             imagebutton idle "extra/botao_geiko.webp":
-                action OpenURL("https://www.linktr.ee/geikogames/")
+                action Notify("Links externos desativados nesta edicao.")
                 xalign 0.98
 
     frame:
@@ -518,7 +518,7 @@ screen navigation():
 
 
 
-        imagebutton auto "extra/botao_geiko_%s.webp" action OpenURL("https://www.geiko.net/jogos")
+        imagebutton auto "extra/botao_geiko_%s.webp" action Notify("Links externos desativados nesta edicao.")
 
 
 
@@ -563,7 +563,7 @@ screen navigation():
 
             style "apoiase_button"
 
-            action OpenURL("https://apoia.se/geiko")
+            action Notify("Links externos desativados nesta edicao.")
 
 
 style navigation_button is gui_button
@@ -1698,7 +1698,7 @@ screen quick_menu():
                 imagebutton auto "extra/celular_menu_%s.png" action Show("menu_celular")
 
             imagebutton idle "extra/botao_geiko.webp":
-                action OpenURL("https://www.linktr.ee/geikogames/")
+                action Notify("Links externos desativados nesta edicao.")
                 xalign 0.98
 
         frame:

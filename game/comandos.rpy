@@ -98,15 +98,15 @@ label comprar_cash:
         "Comprar {b}CR$ 250{/b} por {b}R$ 4,90{/b}":
 
 
-            $ renpy.run(OpenURL('https://play.geiko.net/comprar/celebrity-hunter/' + uid + '/6162f34edb7f4db7b58d'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Comprar {b}CR$ 1.000{/b} por {b}R$ 17,90{/b}":
 
 
-            $ renpy.run(OpenURL('https://play.geiko.net/comprar/celebrity-hunter/' + uid + '/20d774d587a142c78b9a'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Comprar {b}CR$ 2.000{/b} por {b}R$ 29,90{/b}":
 
 
-            $ renpy.run(OpenURL('https://play.geiko.net/comprar/celebrity-hunter/' + uid + '/1060ff0d8ff64c818c35'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Agora não":
 
 
@@ -185,7 +185,7 @@ label comprar_coins:
 
 
 
-            $ renpy.run(OpenURL('https://play.geiko.net/comprar/celebrity-hunter/' + uid + '/e48c202266f44868b8ca'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Agora não":
 
 
@@ -1637,15 +1637,15 @@ label end_priscila:
         "Instagram":
 
 
-            $ renpy.run(OpenURL('https://www.instagram.com/geikogames/'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Facebook":
 
 
-            $ renpy.run(OpenURL('https://www.facebook.com/celebrityhuntergame/'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Twitter":
 
 
-            $ renpy.run(OpenURL('https://twitter.com/GeikoGames'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Talvez depois":
 
 
@@ -1874,7 +1874,7 @@ label end_a:
         "Acessar site de apoiador":
 
 
-            $ renpy.run(OpenURL('https://www.apoia.se/geiko'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Talvez outra hora":
 
 
@@ -1894,15 +1894,15 @@ label end_a:
         "Instagram":
 
 
-            $ renpy.run(OpenURL('https://www.instagram.com/geikogames/'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Facebook":
 
 
-            $ renpy.run(OpenURL('https://www.facebook.com/celebrityhuntergame/'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Twitter":
 
 
-            $ renpy.run(OpenURL('https://twitter.com/GeikoGames'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Talvez depois":
 
 
@@ -2076,7 +2076,7 @@ label mensagem_premium:
 
                     p rindo "Boa! Estou abrindo aqui. Não vai assustar!"
 
-                    $ renpy.run(OpenURL('https://www.apoia.se/geiko'))
+                    $ renpy.notify("Links externos desativados nesta edicao.")
 
                     p rindo "Conseguiu dar uma olhada? O que achou? Não esqueça de baixar a versão premium e instalar por cima desta pra ver tudo!"
                 "Outra hora":
@@ -3938,7 +3938,7 @@ label final_free:
         "Saber mais no site":
 
 
-            $ renpy.run(OpenURL('https://www.apoia.se/geiko'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Talvez outra hora":
 
 
@@ -3952,15 +3952,15 @@ label final_free:
         "Instagram":
 
 
-            $ renpy.run(OpenURL('https://www.instagram.com/geikogames/'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Facebook":
 
 
-            $ renpy.run(OpenURL('https://www.facebook.com/celebrityhuntergame/'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Twitter":
 
 
-            $ renpy.run(OpenURL('https://twitter.com/GeikoGames'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Talvez depois":
 
 
@@ -3980,11 +3980,11 @@ label final_free:
         "Baixar Nautilus 05":
 
 
-            $ renpy.run(OpenURL('https://www.geiko.net/n05/'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Outros jogos +18 da Geiko":
 
 
-            $ renpy.run(OpenURL('https://www.geiko.net/jogos'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Agora não":
 
 
@@ -4002,11 +4002,11 @@ label final_free:
         "Baixar Encontros":
 
 
-            $ renpy.run(OpenURL('https://www.geiko.net/en/'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Outros jogos +18 da Geiko":
 
 
-            $ renpy.run(OpenURL('https://www.geiko.net/jogos'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Quem sabe outra hora...":
 
 
@@ -4026,11 +4026,11 @@ label final_free:
         "Baixar NFC +18":
 
 
-            $ renpy.run(OpenURL('https://www.geiko.net/nfc/'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Outros jogos +18 da Geiko":
 
 
-            $ renpy.run(OpenURL('https://www.geiko.net/jogos'))
+            $ renpy.notify("Links externos desativados nesta edicao.")
         "Numa próxima talvez":
 
 
